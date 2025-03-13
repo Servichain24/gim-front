@@ -24,7 +24,6 @@ This is a simple web application that handles shared links from the GIM Connect 
    IOS_STORE_URL=https://apps.apple.com/app/[YOUR_APP_ID]
    ANDROID_STORE_URL=https://play.google.com/store/apps/details?id=your.bundle.id
    APP_LAUNCH_TIMEOUT=2500
-   BASE_DOMAIN=your-domain.com
    ```
 
 ## Development
@@ -42,16 +41,25 @@ The server will handle all routes correctly for testing deep links.
 
 ## Production Deployment
 
-1. Set up your environment variables.
+### Netlify
 
-2. Build the project:
+1. Connect your repository to Netlify
+
+2. Configure the build settings:
+   - Build command: `npm run build`
+   - Publish directory: `dist`
+
+3. Add environment variables in Netlify's dashboard (Settings > Build & deploy > Environment):
    ```bash
-   npm run build
+   APP_SCHEME=your.app.scheme
+   BUNDLE_ID=your.bundle.id
+   IOS_STORE_URL=your-ios-store-url
+   ANDROID_STORE_URL=your-android-store-url
+   APP_LAUNCH_TIMEOUT=2500
+   BASE_DOMAIN=your-domain.com
    ```
 
-3. Deploy the contents of the `dist` directory to your web server.
-
-4. Configure your web server to handle all routes and redirect them to `index.html`.
+The `_redirects` file is already included in the build, so all routes will work correctly on Netlify.
 
 ## Configuration Options
 
