@@ -1,6 +1,6 @@
 const config = {
     // App specific configuration
-    APP_SCHEME: 'com.gimconnect.app',
+    APP_SCHEME: 'com.gimconnect.app.staging',
 
     // Store URLs
     IOS_STORE_URL: 'https://apps.apple.com/app/6587572586',
