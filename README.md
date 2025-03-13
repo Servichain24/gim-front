@@ -12,18 +12,16 @@ This is a simple web application that handles shared links from the GIM Connect 
    npm install
    ```
 
-2. Create your environment file:
-   ```bash
-   cp .env.example .env
-   ```
-
-3. Edit the `.env` file with your configuration:
-   ```bash
-   # App Configuration
-   APP_SCHEME=your.app.scheme
-   IOS_STORE_URL=https://apps.apple.com/app/[YOUR_APP_ID]
-   ANDROID_STORE_URL=https://play.google.com/store/apps/details?id=your.bundle.id
-   APP_LAUNCH_TIMEOUT=2500
+2. Update the configuration in `public/js/config.js` with your app's values:
+   ```javascript
+   const config = {
+       APP_SCHEME: 'your.app.scheme',
+       BUNDLE_ID: 'your.bundle.id',
+       IOS_STORE_URL: 'your-ios-store-url',
+       ANDROID_STORE_URL: 'your-android-store-url',
+       APP_LAUNCH_TIMEOUT: 2500,
+       BASE_DOMAIN: 'your-domain.com'
+   };
    ```
 
 ## Development
@@ -34,39 +32,32 @@ npm run dev
 ```
 
 This will:
-1. Build the project with your current environment variables
+1. Build the project
 2. Start a local server at `http://localhost:3000`
 
 The server will handle all routes correctly for testing deep links.
 
 ## Production Deployment
 
-### Netlify
+1. Update the configuration in `public/js/config.js` with your production values.
 
-1. Connect your repository to Netlify
-
-2. Configure the build settings:
-   - Build command: `npm run build`
-   - Publish directory: `dist`
-
-3. Add environment variables in Netlify's dashboard (Settings > Build & deploy > Environment):
+2. Build the project:
    ```bash
-   APP_SCHEME=your.app.scheme
-   BUNDLE_ID=your.bundle.id
-   IOS_STORE_URL=your-ios-store-url
-   ANDROID_STORE_URL=your-android-store-url
-   APP_LAUNCH_TIMEOUT=2500
-   BASE_DOMAIN=your-domain.com
+   npm run build
    ```
 
-The `_redirects` file is already included in the build, so all routes will work correctly on Netlify.
+3. Deploy the contents of the `dist` directory to your web server.
+
+4. Configure your web server to handle all routes and redirect them to `index.html`.
 
 ## Configuration Options
 
 - `APP_SCHEME`: Your app's URL scheme (e.g., 'com.gimconnect.app.staging')
+- `BUNDLE_ID`: Your app's bundle identifier
 - `IOS_STORE_URL`: URL to your app in the App Store
 - `ANDROID_STORE_URL`: URL to your app in the Play Store
 - `APP_LAUNCH_TIMEOUT`: Time to wait before redirecting to stores (in milliseconds)
+- `BASE_DOMAIN`: Your website's domain name
 
 ## Testing
 

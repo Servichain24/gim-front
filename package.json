@@ -6,8 +6,5 @@
     "start": "npx serve dist",
     "build": "node build.js",
     "dev": "npm run build && npm start"
-  },
-  "dependencies": {
-    "dotenv": "^16.3.1"
   }
 }
