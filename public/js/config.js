@@ -7,5 +7,5 @@ const config = {
     ANDROID_STORE_URL: 'https://play.google.com/store/apps/details?id=com.gimconnect.app',
 
     // Timeout for app launch attempt (in milliseconds)
-    APP_LAUNCH_TIMEOUT: 2500,
+    APP_LAUNCH_TIMEOUT: 2500
 };
